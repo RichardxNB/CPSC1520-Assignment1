@@ -3,24 +3,42 @@ const albumTitle = document.querySelector('#album-title');
 const albumDescription = document.querySelector('#album-description');
 const albumArt = document.querySelector('#album-art');
 
-album-title.addEventListener('input', onInputAlbumTitle);
+
+albumTitle.addEventListener('input', onInputAlbumTitle);
 
 function onInputAlbumTitle(e) {
-      e.preventDefault();
-        console.log(e.currentTarget.elements[]);
-        
+    e.preventDefault();
+    const letterCount = e.currentTarget.value.length;
+    if (letterCount > 15) {
+        albumTitle.classList.add("is-invalid");
+    }
+    else {
+        albumTitle.classList.remove("is-invalid");
+    }
 }
-
-album-description.addEventListener('input', onInputAlbumDescription);
+albumDescription.addEventListener('input', onInputAlbumDescription);
 
 function onInputAlbumDescription(e) {
-      e.preventDefault();
-        
+    e.preventDefault();
+    const letterCount = e.currentTarget.value.length;
+    if (letterCount > 30) {
+        albumDescription.classList.add("is-invalid");
+    }
+    else {
+        albumDescription.classList.remove("is-invalid");
+    }
+
 }
 
-album-art.addEventListener('input', onSelectAlbumArt);
+albumArt.addEventListener('change', onSelectAlbumArt);
 
 function onSelectAlbumArt(e) {
-      e.preventDefault();
-        
+    e.preventDefault();
+    const value = e.currentTarget.value;
+    if (value === ''){
+        albumArt.classList.add("is-invalid");
+    }
+    else {
+        albumArt.classList.remove("is-invalid");
+    }
 }
